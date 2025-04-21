@@ -1,0 +1,14 @@
+---
+- name: Dosya oluştur ve içerisine yaz
+  hosts: all
+
+  tasks:
+    - name: Test.txt dosyasını oluştur 
+      ansible.builtin.file:
+        path: /home/{{ansible_user}}/test.txt
+        state: touch
+
+    - name: Hello ansible yaz
+      ansible.builtin.lineinfile:
+        path: /home/{{ansible_user}}/test.txt
+        line: 'Hello Ansible'
